@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ActionResultsTutorial.Entities.Employee>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+    @foreach (var item in Model)
+    {
+        <div>
+            <h1>Firstname : @item.Firstname</h1>
+            <h1>Lastname : @item.Lastname</h1>
+            <div>
+                <span>User Id : @item.Id</span>
+            </div>
+        </div>
+    }
+</body>
+</html>
