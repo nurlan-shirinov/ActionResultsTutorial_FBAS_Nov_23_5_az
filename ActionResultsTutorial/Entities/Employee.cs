@@ -1,4 +1,6 @@
-﻿namespace ActionResultsTutorial.Entities
+﻿using System.Collections.Generic;
+
+namespace ActionResultsTutorial.Entities
 {
     public class Employee
     {

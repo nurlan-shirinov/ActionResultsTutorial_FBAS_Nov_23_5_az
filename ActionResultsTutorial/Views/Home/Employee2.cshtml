@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ActionResultsTutorial.Entities.Employee>
+﻿@model ActionResultsTutorial.Models.EmployeeViewModel
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head>
 </head>
 <body>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Employees)
     {
         <div>
             <h1>Firstname : @item.Firstname</h1>
@@ -15,6 +15,11 @@
                 <span>User Id : @item.Id</span>
             </div>
         </div>
+    }
+
+    @foreach (var item in Model.Cities)
+    {
+        <h3>@item</h3>
     }
 </body>
 </html>
