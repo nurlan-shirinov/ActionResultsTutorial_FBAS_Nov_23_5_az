@@ -26,12 +26,18 @@ namespace ActionResultsTutorial
         {
             services.AddControllersWithViews();
 
-            var connectionString = "Data Source=(localdb)\\ProjectModels;Initial Catalog=SchoolDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //var connectionString = "Data Source=(localdb)\\ProjectModels;Initial Catalog=SchoolDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<SchoolDbContext>(opt =>
             {
                 opt.UseSqlServer(connectionString);
             });
+
+            //services.AddSingleton<>();
+            //services.AddScoped<>();
+            //services.AddTransient<>();
 
         }
 

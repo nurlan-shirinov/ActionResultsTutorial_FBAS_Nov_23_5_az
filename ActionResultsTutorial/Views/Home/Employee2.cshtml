@@ -1,28 +1,21 @@
 ﻿@model ActionResultsTutorial.Models.EmployeeViewModel
 
-<!DOCTYPE html>
 
-<html>
-<head>
-</head>
-<body>
-    @foreach (var item in Model.Employees)
-    {
+
+@foreach (var item in Model.Employees)
+{
+    <div>
+        <h1>Firstname : @item.Firstname</h1>
+        <h1>Lastname : @item.Lastname</h1>
         <div>
-            <h1>Firstname : @item.Firstname</h1>
-            <h1>Lastname : @item.Lastname</h1>
-            <div>
-                <span>User Id : @item.Id</span>
-            </div>
+            <span>User Id : @item.Id</span>
         </div>
-    }
+    </div>
+}
 
-    @foreach (var item in Model.Cities)
-    {
-        <h3>@item</h3>
-    }
+@foreach (var item in Model.Cities)
+{
+    <h3>@item</h3>
+}
 
-    <a asp-controller="Employee" asp-action="Add">Go to the index action</a>
-
-</body>
-</html>
+<a asp-controller="Employee" asp-action="Add">Go to the index action</a>
