@@ -1,15 +1,12 @@
 using ActionResultsTutorial.Context;
+using ActionResultsTutorial.Repositories;
+using ActionResultsTutorial.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ActionResultsTutorial
 {
@@ -26,7 +23,6 @@ namespace ActionResultsTutorial
         {
             services.AddControllersWithViews();
 
-            //var connectionString = "Data Source=(localdb)\\ProjectModels;Initial Catalog=SchoolDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
 
@@ -35,10 +31,12 @@ namespace ActionResultsTutorial
                 opt.UseSqlServer(connectionString);
             });
 
-            //services.AddSingleton<>();
-            //services.AddScoped<>();
-            //services.AddTransient<>();
+            //services.AddSingleton<ICalculator , Calculator>();
+            //services.AddScoped<ICalculator , Calculator>();
+            //services.AddTransient<ICalculator , Calculator>();
 
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IStudentService, StudentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

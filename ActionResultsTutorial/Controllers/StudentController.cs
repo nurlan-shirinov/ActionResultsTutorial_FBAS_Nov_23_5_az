@@ -1,6 +1,5 @@
-﻿using ActionResultsTutorial.Context;
+﻿using ActionResultsTutorial.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace ActionResultsTutorial.Controllers
@@ -8,16 +7,16 @@ namespace ActionResultsTutorial.Controllers
     public class StudentController : Controller
     {
 
-        private readonly SchoolDbContext _context;
+        private readonly IStudentService _studentService;
 
-        public StudentController(SchoolDbContext context)
+        public StudentController(IStudentService studentService)
         {
-            _context = context;
+            _studentService = studentService;
         }
-        
-        public async Task<IActionResult> Index()
+
+        public async Task<IActionResult> Index(string key="")
         {
-            return View(await _context.Students.ToListAsync());
+            return View(await _studentService.GetAllByKeyAsync(key));
         }
     }
 }

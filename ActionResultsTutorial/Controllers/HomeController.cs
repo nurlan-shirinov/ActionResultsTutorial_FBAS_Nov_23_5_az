@@ -1,5 +1,6 @@
 ﻿using ActionResultsTutorial.Entities;
 using ActionResultsTutorial.Models;
+using ActionResultsTutorial.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using System.Collections.Generic;
@@ -9,9 +10,19 @@ namespace ActionResultsTutorial.Controllers
 {
     public class HomeController : Controller
     {
+
+        private readonly ICalculator _calculate1;
+        private readonly ICalculator _calculate2;
+
+        public HomeController(ICalculator calculate1, ICalculator calculate2)
+        {
+            _calculate1 = calculate1;
+            _calculate2 = calculate2;
+        }
+
         public string Index()
         {
-            return "Hello From Index action";
+            return $"Hello From Index action{_calculate1.Calculate()} - {_calculate2.Calculate()}";
         }
 
         public IActionResult Index2()
